@@ -1,6 +1,6 @@
 # Sandbox feasibility and residual risk
 
-Initial desk research, consulted 2026-09-26. No isolation, performance, or compatibility experiment has been run. The roadmap specifies Docker for the initial milestone; the boundary and its supported host environment must be justified in PR 2 and validated in PR 7.
+Initial desk research, consulted 2026-09-26. No isolation, performance, or compatibility experiment has been run. The roadmap specifies Docker for the initial milestone; the boundary and its supported host environment must be justified during architecture design and validated during sandbox implementation.
 
 | Option | Mechanism described by primary source | Project assessment and unanswered question |
 | --- | --- | --- |
@@ -20,10 +20,10 @@ The project assessments are inferences from these mechanisms and the roadmap's s
 
 Docker is not equivalent to a hardened VM or a proof that hostile code cannot affect the host. Shared-kernel vulnerabilities, unsafe mounts, daemon access, dependency supply-chain problems, and configuration mistakes remain risks. A dedicated evaluation environment should be assessed before running genuinely hostile tasks.
 
-## Questions and validation work for later slices
+## Open design questions and validation requirements
 
-PR 2 must describe the host trust boundary, supported environment, credential placement, hidden-grader isolation, and artifact handling. Hosted provider access will need a design that does not silently grant candidate code general network access or provider credentials.
+The architecture design must define the host trust boundary, supported environment, credential placement, hidden-grader isolation, and artifact handling. Hosted provider access will need a design that does not silently grant candidate code general network access or provider credentials.
 
-PR 7 security checks must address malicious setup scripts, resource exhaustion/fork bombs, filesystem and symlink escapes, network exfiltration, secret discovery, command injection from metadata, path traversal, oversized output, and cleanup failure. Grader and workspace designs must also consider poisoned fixtures, malicious patches, protected-test tampering, and fabricated reports. PR 3's CI design must address compromised dependencies and separate trusted platform checks from untrusted evaluation execution.
+Sandbox security checks must address malicious setup scripts, resource exhaustion/fork bombs, filesystem and symlink escapes, network exfiltration, secret discovery, command injection from metadata, path traversal, oversized output, and cleanup failure. Grader and workspace designs must also consider poisoned fixtures, malicious patches, protected-test tampering, and fabricated reports. The engineering quality baseline's CI design must address compromised dependencies and separate trusted platform checks from untrusted evaluation execution.
 
-These are requirements to demonstrate later. There is no executable sandbox configuration in PR 1.
+These are requirements to demonstrate later. Executable sandbox configuration has not yet been implemented.

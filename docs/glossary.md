@@ -13,7 +13,7 @@ These definitions establish product vocabulary. They do not define implementatio
 | Task | A stable repository-level engineering problem, such as fixing a bug or adding bounded behavior |
 | Task version | An immutable task definition tied to a repository snapshot, setup, checks and resource policy |
 | Repository snapshot | The exact starting source state, identified by revision and content provenance |
-| Manifest | A reviewable machine-readable specification; its schema is introduced in PR 5 |
+| Manifest | A reviewable machine-readable specification; its schema is introduced during task-specification implementation |
 | Digest | A content-derived identifier used to detect changes; algorithm and canonicalization require design |
 | Attempt | One budgeted opportunity for an agent configuration to solve a task |
 | Run | The recorded lifecycle and evidence for executing an attempt, including preparation and grading |

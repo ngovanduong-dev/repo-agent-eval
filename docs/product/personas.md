@@ -14,7 +14,7 @@ These are workflow roles, not implemented authentication roles. One person may o
 
 The operator-controlled runner and evaluation configuration form a trusted control boundary. Task repositories, setup commands, agent output, patches, filenames, and process output cross it as untrusted inputs. Review reduces mistakes but does not make executable repository contents safe.
 
-The candidate workspace must not contain hidden tests, reference solutions, provider credentials, or host control sockets during agent execution. Grading assets require a separate access boundary and integrity checks; the mechanism is a PR 2 design question and later sandbox acceptance requirement.
+The candidate workspace must not contain hidden tests, reference solutions, provider credentials, or host control sockets during agent execution. Grading assets require a separate access boundary and integrity checks; the mechanism must be defined during architecture design and validated during sandbox implementation.
 
 Reports cross a publication boundary. The reviewer checks redaction and disclosure scope before evidence is shared. Access to a public report does not imply access to all underlying logs or held-out tasks.
 

@@ -8,9 +8,9 @@ RepoAgentEval will measure how coding agents change repositories: whether they s
 
 ## Current status
 
-Project framing only (roadmap PR 1), pending review. This repository contains documentation; there is no runnable evaluator, dataset, package, API, or benchmark result yet. There are no installation or execution commands at this stage.
+The product and evaluation foundations are documented. Executable evaluation infrastructure has not yet been implemented; there is no runnable evaluator, dataset, package, API, or benchmark result. There are no installation or execution commands at this stage.
 
-The [roadmap](docs/ROADMAP.md) is the primary source of truth. Its Part VI defines the PR sequence; the numbered phases organize the broader subject areas. Work proceeds one independently reviewable slice at a time. The next slice is **PR 2 — Architecture and ADR baseline**.
+The [roadmap](docs/ROADMAP.md) describes capability milestones and their dependencies. Architecture, security boundaries, and execution contracts are planned next.
 
 ## Start here
 
@@ -29,7 +29,7 @@ The [roadmap](docs/ROADMAP.md) is the primary source of truth. Its Part VI defin
 
 ## Intended first runnable milestone
 
-A versioned fixture task will run through manifest validation, repository preparation, isolated execution with a deterministic local agent, grading, and a JSON report. This vertical slice is scheduled for PR 10 after its prerequisites. It will establish evidence handling before hosted agents, repeated experiments, or database persistence are added.
+A versioned fixture task will run through manifest validation, repository preparation, isolated execution with a deterministic local agent, grading, and a JSON report. This pipeline depends on validated task specifications, workspace management, sandboxing, an agent abstraction, and deterministic grading. It will establish evidence handling before hosted agents, repeated experiments, or database persistence are added.
 
 The larger credible benchmark milestone requires 20–30 original tasks, multiple attempts, at least two adapters, and statistical reporting. Those are future acceptance targets, not current capabilities.
 
@@ -37,4 +37,4 @@ The larger credible benchmark milestone requires 20–30 original tasks, multipl
 
 Start with a modular monolith and CLI evaluation core. Keep provider types behind adapters, prefer deterministic graders, version experimental inputs, and retain evidence for failures as well as successes. Treat repositories, generated patches, setup scripts, and emitted artifacts as untrusted. Docker is the roadmap's initial execution direction, with residual risks to be documented and tested.
 
-Runtime and boundary decisions belong in PR 2 ADRs; tooling and CI belong in PR 3. No dependencies are required to review these documents. Review should focus on the product assumptions, milestone boundaries, measurement limits, and unresolved risks. Final design approval and merge remain with the maintainer.
+Runtime and boundary decisions will be documented in ADRs. Tooling and CI will establish the engineering quality baseline before evaluation infrastructure is implemented. The documentation identifies product assumptions, milestone boundaries, measurement limits, and unresolved risks.

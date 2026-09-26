@@ -6,10 +6,10 @@ All targets below are prospective. Current evidence consists only of project fra
 
 | Gate | Evidence required | Review responsibility |
 | --- | --- | --- |
-| PR 1 framing | Acceptance criteria in [scope](scope.md) satisfied; assumptions and non-goals inspectable | Maintainer |
-| First runnable slice, PR 10 | One fixture end to end, invalid manifest rejected before execution, deterministic timeout handling, patch captured, structural test results, serializable report, success/failure tests, equivalent deterministic outputs on replay | Maintainer and technical reviewer |
+| Product and evaluation foundations | Acceptance criteria in [scope](scope.md) satisfied; assumptions and non-goals inspectable | Maintainer |
+| End-to-end evaluation pipeline | One fixture end to end, invalid manifest rejected before execution, deterministic timeout handling, patch captured, structural test results, serializable report, success/failure tests, equivalent deterministic outputs on replay | Maintainer and technical reviewer |
 | Minimum credible benchmark | 20–30 internally authored tasks; at least two categories and two adapters; reproducible Docker execution; hidden/regression tests; structured artifacts; multiple attempts per task; failure taxonomy; confidence intervals; platform CI regression gate; limitations | Task reviewer and evaluator |
-| Strong portfolio milestone | 80–150 reviewed tasks; Python and TypeScript repositories; 4–6 categories; at least three configurations; one human-calibrated qualitative dimension; cost/latency/stability analysis; public benchmark card and experiment report | Technical reviewers and evaluator |
+| Expanded benchmark milestone | 80–150 reviewed tasks; Python and TypeScript repositories; 4–6 categories; at least three configurations; one human-calibrated qualitative dimension; cost/latency/stability analysis; public benchmark card and experiment report | Technical reviewers and evaluator |
 
 These reproduce roadmap milestones, not deadlines. A small task set supports conclusions about that task set; it does not establish general software-engineering competence.
 
@@ -26,10 +26,10 @@ These reproduce roadmap milestones, not deadlines. A small task set supports con
 | Cost | Recorded charges or explicitly labeled estimates with pricing provenance | Proposed cost per success includes unsuccessful attempts' costs; no successes means undefined |
 | Latency | End-to-end elapsed time with preparation, execution and grading separated | Include failures/timeouts in distributions; distinguish execution time from later queue delays |
 
-Proposed solve-rate reporting will include the solved count, denominator, invalid/excluded counts and their reasons. Agent failure and timeout must not disappear from the denominator merely to improve results. The exact invalid-run and aggregation semantics require PR 2 design and PR 13 implementation review.
+Proposed solve-rate reporting will include the solved count, denominator, invalid/excluded counts and their reasons. Agent failure and timeout must not disappear from the denominator merely to improve results. The exact invalid-run semantics require architecture design; aggregation semantics must be validated during experimentation and statistical analysis.
 
 ## Platform evidence quality
 
 Require complete input and evidence references for every run reported as valid. Report missing artifacts, redactions, truncated logs, environment drift, and task-validation failures explicitly. Test deterministic replay with controlled local fixtures separately from stochastic agent repeatability.
 
-Before comparisons, declare attempts, budgets, inclusion/exclusion rules, and uncertainty methods. PR 13 must select a method that accounts for repeated attempts within tasks. No confidence intervals or significance claims are available now, and there is no weighted overall score.
+Before comparisons, declare attempts, budgets, inclusion/exclusion rules, and uncertainty methods. The statistical method must account for repeated attempts within tasks. No confidence intervals or significance claims are available now, and there is no weighted overall score.

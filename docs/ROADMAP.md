@@ -2,20 +2,17 @@
 
 ## 0. Project identity
 
-**Vietnamese title**  
+**Vietnamese title**\
 **Xây dựng nền tảng đánh giá và benchmark tác nhân lập trình sử dụng mô hình ngôn ngữ lớn trên các tác vụ kỹ nghệ phần mềm ở mức kho mã nguồn**
 
-**English title**  
+**English title**\
 **A Repository-Level Evaluation and Benchmarking Platform for LLM-Based Software Engineering Agents**
 
-**Suggested repository name**  
+**Suggested repository name**\
 `repo-agent-eval`
 
-**Working product name**  
+**Working product name**\
 `RepoAgentEval`
-
-**Primary career signal**  
-Coding/Technical AI Evaluation, software-engineering evaluation infrastructure, reproducible experimentation, testing, CI/CD, statistics, observability, secure execution.
 
 ---
 
@@ -41,34 +38,34 @@ The platform is not intended to be a coding assistant or an IDE plugin. Its prod
 
 ## 2. Design principles
 
-1. **Eval-driven development**  
+1. **Eval-driven development**\
    Evaluation definitions, datasets, expected outcomes, and failure taxonomies are first-class artifacts.
 
-2. **Reproducibility before scale**  
+2. **Reproducibility before scale**\
    A run must be repeatable locally before distributed execution is introduced.
 
-3. **Deterministic scoring before LLM judging**  
+3. **Deterministic scoring before LLM judging**\
    Hidden tests, static checks, patch analysis, and measurable outcomes should be preferred whenever possible.
 
-4. **Provider/model independence**  
+4. **Provider/model independence**\
    Core domain logic must not depend on one LLM vendor, one API, or one agent implementation.
 
-5. **Repository isolation by default**  
+5. **Repository isolation by default**\
    Candidate code is untrusted. Execution should occur in ephemeral sandboxes with explicit resource and network policies.
 
-6. **Small, reviewable changes**  
+6. **Small, reviewable changes**\
    One issue → one coherent pull request. Avoid feature bundles and repository-wide rewrites.
 
-7. **Document decisions, not just code**  
+7. **Document decisions, not just code**\
    Important architectural decisions use ADRs. Requirements, threat assumptions, data contracts, and scoring semantics are versioned.
 
-8. **No benchmark theatre**  
+8. **No benchmark theatre**\
    A single aggregate score must never hide unstable runs, excluded cases, invalid tasks, or scoring uncertainty.
 
-9. **Human calibration matters**  
+9. **Human calibration matters**\
    Any LLM-based grader must be validated against human labels before its output is treated as a meaningful metric.
 
-10. **UI comes after the evaluation core**  
+10. **UI comes after the evaluation core**\
     The first useful interface is a CLI and machine-readable report, not a dashboard.
 
 ---
@@ -151,7 +148,7 @@ Document at least these roles:
 **Read-only consumer**
 - Reads benchmark reports and experiment summaries without mutating data.
 
-Do not implement authentication yet. First define the actors and trust boundaries.
+Actor definitions and trust boundaries precede authentication design.
 
 ### 0.2 Core use cases
 
@@ -178,7 +175,7 @@ Later phases add:
 
 ### 0.3 Explicit non-goals for MVP
 
-Do not build initially:
+The initial MVP excludes:
 
 - A general-purpose IDE.
 - An autonomous code-generation SaaS.
@@ -207,7 +204,7 @@ A minimum credible milestone:
 - CI regression gate on the platform itself.
 - Documented limitations.
 
-A strong portfolio milestone:
+An expanded benchmark milestone:
 
 - 80–150 reviewed tasks.
 - Python + TypeScript repositories.
@@ -457,7 +454,7 @@ For the MVP:
 - artifact size limits,
 - explicit cleanup.
 
-Do not claim the Docker boundary is equivalent to a hardened VM. Document residual risk.
+The Docker boundary is not equivalent to a hardened VM; its residual risks require documentation and validation.
 
 ### CI security baseline
 
@@ -748,7 +745,7 @@ Useful statistics:
 - rank correlation,
 - confusion matrix.
 
-Do not advertise a grader as validated unless the calibration experiment was actually run.
+Claims of grader validity require evidence from a completed calibration experiment.
 
 ---
 
@@ -844,7 +841,7 @@ For a hosted multi-user version:
 - Server-side authorization checks are mandatory.
 - Do not trust UI visibility as authorization.
 
-Do not implement auth in the first CLI-only milestone.
+Authentication is outside the first CLI-only milestone.
 
 ---
 
@@ -1008,11 +1005,11 @@ implement everything
 
 ---
 
-# PART VI — RECOMMENDED PR SEQUENCE
+# PART VI — CAPABILITY MILESTONES
 
-The purpose of this sequence is to demonstrate design maturity in Git history.
+The milestones below follow dependency order. Domain contracts and execution boundaries precede the end-to-end pipeline; persistence and single-agent evidence precede repeated experiments and cross-model evaluation. Each milestone can be delivered through small, independently reviewable changes.
 
-### PR 1 — Project framing only
+### Product and Evaluation Foundations
 - README skeleton.
 - Vision.
 - scope/non-goals.
@@ -1021,14 +1018,14 @@ The purpose of this sequence is to demonstrate design maturity in Git history.
 - initial roadmap.
 - no production implementation.
 
-### PR 2 — Architecture and ADR baseline
+### Architecture and Security Design
 - System context.
 - component boundaries.
 - initial ADRs.
 - threat-model draft.
 - no provider integration.
 
-### PR 3 — Tooling and quality baseline
+### Engineering Quality Baseline
 - Python packaging.
 - formatter/linter/type checker.
 - pytest.
@@ -1036,82 +1033,82 @@ The purpose of this sequence is to demonstrate design maturity in Git history.
 - minimal CI.
 - dependency update/security configuration.
 
-### PR 4 — Domain models
+### Core Domain Model
 - Benchmark/task/run contracts.
 - state-machine rules.
 - tests.
 
-### PR 5 — Task manifest v1
-- schema,
+### Task Specification
+- task manifest schema v1,
 - parser,
 - validation,
 - fixtures,
 - tests.
 
-### PR 6 — Repository workspace abstraction
+### Repository Workspace
 - fixture repository,
 - checkout/reset,
 - patch capture,
 - tests.
 
-### PR 7 — Sandbox MVP
+### Sandboxed Execution
 - container execution,
 - resource policy,
 - timeout,
 - network disabled,
 - security tests.
 
-### PR 8 — Mock/local agent adapter
+### Agent Abstraction
 - adapter protocol,
-- deterministic implementation,
+- deterministic mock/local implementation,
 - contract tests.
 
-### PR 9 — Deterministic test grader
+### Deterministic Evaluation
 - structured test results,
 - fail-to-pass/pass-to-pass semantics,
 - tests.
 
-### PR 10 — End-to-end vertical slice
+### End-to-End Evaluation Pipeline
 - CLI command,
 - one sample task,
 - JSON result,
 - integration test.
 
-### PR 11 — PostgreSQL persistence
-- schema/migrations,
+### Persistence and Provenance
+- PostgreSQL schema/migrations,
 - repository interfaces,
 - migration tests.
 
-### PR 12 — First real coding-agent adapter
+### Real Coding-Agent Integration
 - provider isolation,
 - configuration,
 - sanitized tracing,
 - mocked contract tests.
 
-### PR 13 — Batch/repeat experiments
+### Experimentation and Statistical Analysis
 - repeated attempts,
 - aggregation,
 - statistical report.
 
-### PR 14 — Failure taxonomy
+### Failure Analysis
 - documented labels,
 - classifier workflow,
 - report output.
 
-### PR 15 — Second agent adapter
+### Cross-Model Evaluation
+- second agent adapter,
 - comparison report,
 - provider-independent metrics.
 
-### PR 16+ — Human calibration, queueing, API, auth, UI
-Only after core evaluation is credible.
+### Advanced Platform Capabilities
+
+Human calibration, queueing, API, authentication, and UI follow a credible evaluation core. Queueing additionally requires evidence that synchronous execution limits throughput.
 
 ---
 
-# PART VII — PORTFOLIO ACCEPTANCE CRITERIA
+# PART VII — PROJECT ACCEPTANCE CRITERIA
 
-The repository is not portfolio-ready merely because the app runs.
-
-It should visibly demonstrate:
+A working application alone is insufficient for credible evaluation. The project must provide inspectable evidence of:
 
 - clear project scope and non-goals,
 - ADRs,
@@ -1126,12 +1123,10 @@ It should visibly demonstrate:
 - reproducible benchmark manifest,
 - experiment report,
 - limitations,
-- CI history,
-- small PR history.
+- reproducible CI validation,
+- independently reviewable changes.
 
-A recruiter should be able to inspect the repository and infer:
-
-> The author understands how to define, build, test, evaluate, secure, and evolve an AI evaluation system rather than only how to call an LLM API.
+Published evaluation results must be traceable to versioned inputs, execution evidence, and documented scoring semantics. Reports must disclose uncertainty, exclusions, and known limitations.
 
 ---
 

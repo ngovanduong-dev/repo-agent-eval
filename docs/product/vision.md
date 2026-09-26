@@ -21,7 +21,7 @@ The hypothesis is that a small, reviewed, original task set with complete eviden
 
 The first feasibility gate is one repeatable fixture run with structured success and failure evidence. Later gates establish task validity, adapter comparability, and the usefulness of repeated attempts. If those fail, investigate task design or measurement before expanding infrastructure.
 
-No stakeholder interviews, usability study, or benchmark experiment have been completed in this framing slice. The personas are working assumptions to validate with authors, evaluators, and reviewers.
+No stakeholder interviews, usability study, or benchmark experiment have been completed yet. The personas are working assumptions to validate with authors, evaluators, and reviewers.
 
 ## Constraints
 

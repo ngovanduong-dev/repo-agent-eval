@@ -21,4 +21,4 @@ An author proposes a bug-fix task whose target check fails on the baseline while
 
 If the patch fixes the target but breaks a regression check, the report preserves both outcomes. If setup fails before the agent starts, the report records an execution problem rather than a wrong answer. A later attempt starts from the same clean snapshot; it does not inherit the previous patch.
 
-This is a specification example, not a task fixture or a recorded experiment. Contract fields and state-transition rules are designed in PR 2 and implemented in the relevant later PRs.
+This is a specification example, not a task fixture or a recorded experiment. Contract fields and state-transition rules require architecture design before domain-model implementation.
