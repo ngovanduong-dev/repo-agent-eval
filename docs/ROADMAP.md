@@ -939,69 +939,13 @@ Suitable for:
 
 ---
 
-# PART V — GIT/PR OPERATING MODEL
+# PART V — DEVELOPMENT PRINCIPLES
 
-## Branching
-
-Use short-lived branches:
-
-```text
-docs/problem-framing
-arch/domain-contracts
-feat/task-manifest
-feat/local-sandbox
-feat/run-state-machine
-feat/postgres-persistence
-feat/deterministic-grader
-...
-```
-
-## Pull-request policy
-
-One PR must have one primary purpose.
-
-Project-specific guideline:
-
-- Typical feature PR: aim for roughly 150–400 changed production lines.
-- Soft review threshold: ~600 changed production lines.
-- >1,000 changed production lines should normally be split unless most changes are generated fixtures, migrations, lockfiles, or mechanical renames.
-
-These are local review heuristics, not universal industry limits.
-
-Each PR description should include:
-
-```text
-Problem
-Scope
-Out of scope
-Design/decision
-Validation performed
-Security/compatibility impact
-Known limitations
-Follow-up work
-```
-
-## Commit policy
-
-Prefer coherent commits such as:
-
-```text
-docs: define benchmark actors and MVP scope
-arch: add task and run domain contracts
-test: cover run state transition rules
-feat: validate versioned task manifests
-feat: execute fixture task in isolated container
-```
-
-Avoid:
-
-```text
-update project
-big changes
-final
-fix stuff
-implement everything
-```
+- Changes focus on one primary engineering concern.
+- Relevant tests and documentation evolve with behavior.
+- Significant architectural decisions are recorded in ADRs.
+- Working behavior is preserved across incremental milestones.
+- Substantial refactoring is separated from unrelated feature work where practical.
 
 ---
 
@@ -1145,7 +1089,7 @@ A feature is done only when applicable items are complete:
 - docs updated,
 - no secrets or private benchmark material exposed,
 - CI passes,
-- PR is independently reviewable,
+- the change is independently reviewable,
 - known limitations are recorded.
 
 ---
